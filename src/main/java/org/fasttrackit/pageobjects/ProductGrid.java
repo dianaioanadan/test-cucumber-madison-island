@@ -131,6 +131,4 @@ public class ProductGrid {
         return  convertedPrices;
     }
 
-
-
 }

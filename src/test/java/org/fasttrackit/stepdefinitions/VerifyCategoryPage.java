@@ -13,7 +13,5 @@ public class VerifyCategoryPage extends TestBase {
         String URL = driver.getCurrentUrl();
 
         assertThat("User is not on the right page", URL, is("https://fasttrackit.org/selenium-test/vip.html"));
-
-        driver.quit();
     }
 }

@@ -22,3 +22,28 @@ Feature: Vip Category Page
     When  Open category page
     And I click on product name
     Then Product detail page is open
+
+  Scenario:  Recently Viewed Products Component is displayed
+    Given  I open the home page
+    When  Open category page
+    And I click on product name
+    And I click back
+    Then Recently Viewed Products Component is displayed
+
+  Scenario: Add product to wishlist without login
+    Given I open the home page
+    When  Open category page
+    And I click on wishlist button
+    Then Login page is open
+
+  Scenario: Add product to compare
+    Given I open the home page
+    When  Open category page
+    And I click Add to Compare button
+    Then Compare component is displayed on page
+
+  Scenario: Search functionality from CategoryPage
+    Given I open the home page
+    When  Open category page
+    And I search products by "vase"
+    Then "Vase" products are displayed

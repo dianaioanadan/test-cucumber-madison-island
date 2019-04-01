@@ -10,6 +10,13 @@ public class RightMenu {
     @FindBy(xpath = "//div[@class='block-content']//li[@class='item last odd']")
     private WebElement recentlyViewedElement;
 
+    @FindBy(xpath = "//div[contains(@class,'block-compare')]")
+    private WebElement compareComponent;
+
+    public WebElement getCompareComponent() {
+        return compareComponent;
+    }
+
     public WebElement getRecentlyViewedElement() {
         return recentlyViewedElement;
     }
