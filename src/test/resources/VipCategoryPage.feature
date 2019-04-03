@@ -42,6 +42,18 @@ Feature: Vip Category Page
     And I click Add to Compare button
     Then Compare component is displayed on page
 
+  Scenario: Add to Cart products
+    Given I open the home page
+    When  Open category page
+    And I click Add to Cart button
+    Then Checkout page is open
+
+  Scenario: Products are filter by price
+    Given  I open the home page
+    When  Open category page
+    And I click on filter by price option
+    Then All products are filter by price
+
   Scenario: Search functionality from CategoryPage
     Given I open the home page
     When  Open category page
