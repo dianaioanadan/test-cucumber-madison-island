@@ -8,7 +8,7 @@ Feature: Vip Category Page
   Scenario: Products are sorted by price on category page
     Given  I open the home page
     When  Open category page
-    And I sort products by "Price" in descending order
+    And I sort products by "Price" in ascending order
     Then All products are sorted by "Price" in ascending order
 
   Scenario: Open Product detail page by click on product image

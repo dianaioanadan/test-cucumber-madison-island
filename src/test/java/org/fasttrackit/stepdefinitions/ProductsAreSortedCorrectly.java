@@ -1,5 +1,6 @@
 package org.fasttrackit.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import org.fasttrackit.TestBase;
 import org.fasttrackit.pageobjects.ProductGrid;
@@ -23,6 +24,13 @@ public class ProductsAreSortedCorrectly extends TestBase {
         return priceValue;
     }
 
+    private void assertCorrectSortByPrice(Comparator comparator) {
+        List<Double> prices = productsGrid.getActualProductPricesAsDouble();
+        List<Double> sortedPriced = new ArrayList<>(prices);
+        sortedPriced.sort(comparator);
+        assertThat("Products are not sorted correctly.", prices, equalTo(sortedPriced));
+    }
+
     private ProductGrid productsGrid = PageFactory.initElements(driver, ProductGrid.class);
 
     @Then("^All products are sorted by \"([^\"]*)\" in (.+) order$")
@@ -34,6 +42,13 @@ public class ProductsAreSortedCorrectly extends TestBase {
             comparator = Comparator.naturalOrder();
         } else {
             comparator = Comparator.reverseOrder();
+        }
+
+        if (sortCriteria.equalsIgnoreCase("Price")) {
+            assertCorrectSortByPrice(comparator);
+        }
+        else{
+            throw new PendingException("Assertion for sort by "+ sortCriteria + " not implemented.");
         }
 
         List<Double> prices = productsGrid.getActualProductPricesAsDouble();
